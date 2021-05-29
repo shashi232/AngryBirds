@@ -12,7 +12,7 @@ var bird;
 var newLog;
 
 var bgImg;
-var chain;
+var sling;
 
 function preload(){
    bgImg = loadImage("sprites/bg.png");
@@ -42,8 +42,8 @@ function setup(){
 
     ground = new Ground(600,height,1200,20);
 
-    chain = new Chain(bird.body,newLog.body);
-    console.log(chain);
+    sling = new Slingshot(bird.body,{x:200,y:100});
+    
 }
 function draw(){
     background(bgImg);
@@ -65,7 +65,26 @@ function draw(){
     bird.display();
     newLog.display();
 
-    chain.display();
+    sling.display();
 
     
 }
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY});
+
+}
+
+function mouseReleased(){
+    sling.fly();
+}
+
+
+
+
+
+
+
+
+
+
+
