@@ -13,6 +13,7 @@ var newLog;
 
 var bgImg;
 var sling;
+var platform;
 
 function preload(){
    bgImg = loadImage("sprites/bg.png");
@@ -33,16 +34,17 @@ function setup(){
 
     pig2 = new Pig(810,220);
     log2 = new Log(810,180,300,PI/2);
-    newLog = new Log(100,200,300,PI/2);
 
     log3 = new Log(760,120,150,PI/7);
     log4 = new Log(870,120,150,-PI/7);
 
-    bird = new Bird(100,100);
+    bird = new Bird(200,50);
 
     ground = new Ground(600,height,1200,20);
 
-    sling = new Slingshot(bird.body,{x:200,y:100});
+    sling = new Slingshot(bird.body,{x:200,y:50});
+
+    platform = new Ground(150,305,300,170);
     
 }
 function draw(){
@@ -63,9 +65,10 @@ function draw(){
     log4.display();
 
     bird.display();
-    newLog.display();
-
+   
     sling.display();
+
+    platform.display();
 
     
 }
