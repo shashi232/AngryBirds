@@ -14,6 +14,7 @@ var newLog;
 var bgImg;
 var sling;
 var platform;
+var gameState = "onsling";
 
 function preload(){
    bgImg = loadImage("sprites/bg.png");
@@ -73,16 +74,21 @@ function draw(){
     
 }
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY});
+    if(gameState === "onsling"){
+        Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY});
+    }
+   
 
 }
 
 function mouseReleased(){
     sling.fly();
+    gameState = "launched";
 }
 
 function keyPressed(){
     if(keyCode === 32){
+        bird.trajectory = [];
         sling.attach(bird.body);
     }
 }
